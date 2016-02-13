@@ -1,7 +1,7 @@
 -- @Author: Admin
 -- @Date:   2015-12-13 09:39:52
 -- @Last Modified by:   Webster
--- @Last Modified time: 2016-02-01 13:14:51
+-- @Last Modified time: 2016-02-13 11:30:11
 local tinsert = table.insert
  -- stack overflow
 local function GetUIStru(ui)
@@ -14,7 +14,7 @@ local function GetUIStru(ui)
 		if bIsWnd then
 			bChild     = ui:GetFirstChild() ~= nil
 			hChildItem = ui:Lookup("", "")
-		elseif szType == "Handle" then
+		elseif szType == "Handle" or szType == "TreeLeaf" then
 			bChild = ui:Lookup(0) ~= nil
 		end
 		local dat = {
@@ -207,9 +207,9 @@ end
 function UI.GetFrame()
 	return Station.Lookup("Topmost/UIEditor")
 end
-UI.IsOpend = UI.GetFrame
+UI.IsOpened = UI.GetFrame
 function UI.ToggleFrame()
-	if UI.IsOpend() then
+	if UI.IsOpened() then
 		UI.CloseFrame()
 	else
 		UI.OpenFrame()
